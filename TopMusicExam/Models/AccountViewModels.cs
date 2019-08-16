@@ -8,6 +8,9 @@ namespace TopMusicExam.Models
         [Required]
         [Display(Name = "Courrier électronique")]
         public string Email { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -68,6 +71,18 @@ namespace TopMusicExam.Models
         [EmailAddress]
         [Display(Name = "Courrier électronique")]
         public string Email { get; set; }
+
+        /* Add required FirstName */
+        [Required]
+        [StringLength(100, ErrorMessage = "La chaîne {0} doit comporter au moins {2} caractères.", MinimumLength = 2)]
+        public string FirstName { get; set; }
+
+        /* Add required LastName  */
+        [Required]
+        [StringLength(100, ErrorMessage = "La chaîne {0} doit comporter au moins {2} caractères.", MinimumLength = 2)]
+        public string LastName { get; set; }
+
+        
 
         [Required]
         [StringLength(100, ErrorMessage = "La chaîne {0} doit comporter au moins {2} caractères.", MinimumLength = 6)]
