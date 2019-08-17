@@ -5,10 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using TopMusicApplication.Services;
+using TopMusicApplication.ViewModels;
+using TopMusicExam.Controllers;
 using TopMusicExam.Models;
 
 
-namespace TopMusicExam.Controllers
+namespace TopMusicExam.Areas.Admin.Controllers
 {
     public class RoleController : Controller
     {
@@ -32,33 +35,17 @@ namespace TopMusicExam.Controllers
         }
 
 
-        // GET: /Roles/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
         //
         // POST: /Roles/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RoleViewModel viewModel)
         {
+            var roleService = new RoleServiceController();
+            roleService.CreateRole(viewModel);
 
-            try
-            {
-                var context = new Models.ApplicationDbContext();
-                context.Roles.Add(new Microsoft.AspNet.Identity.EntityFramework.IdentityRole()
-                {
-                    Name = collection["RoleName"]
-                });
-                context.SaveChanges();
-                ViewBag.Message = "Role created successfully !";
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
+
         }
 
 

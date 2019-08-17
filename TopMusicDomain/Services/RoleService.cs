@@ -11,16 +11,24 @@ namespace TopMusicDomain.Services
     {
         public static string CreateRole (string roleName)
         {
-            using (TopMusicEntities db = new TopMusicEntities())
+            try
             {
-                var role = new AspNetRoles
+                using (TopMusicEntities db = new TopMusicEntities())
                 {
-                    Name = roleName
-                };
-                db.AspNetRoles.Add(role);
-                db.SaveChanges();
-                return role.Name;
+                    var role = new AspNetRoles
+                    {
+                        Name = roleName
+                    };
+                    db.AspNetRoles.Add(role);
+                    db.SaveChanges();
+                    return role.Name;
+                }
             }
+            catch (Exception error)
+            {
+                throw;
+            }
+            
         }
 
 

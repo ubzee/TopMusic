@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TopMusicApplication.ViewModels;
-
-
+using TopMusicDomain.Services;
 
 namespace TopMusicApplication.Services
 {
-    class RoleService
+    public class RoleServiceController
     {
         public string CreateRole(RoleViewModel viewModel)
         {
-            return TopMusicDomain.Services.RoleService.CreateRole(viewModel.Name);
+            return RoleService.CreateRole(viewModel.Name);
         }
     }
 }
