@@ -21,10 +21,20 @@ namespace TopMusicExam
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
-
+    
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/bootstrap-theme.css",
+                      "~/Content/main.css",
+                      "~/Content/Site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/progressus").Include(
+                    "~/Scripts/google-map.js",
+                    "~/Scripts/headroom.min.js",
+                    "~/Scripts/JQuery.headroom.min.js",
+                    "~/Scripts/template.js"
+                ));
         }
     }
 }
