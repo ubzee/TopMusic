@@ -21,7 +21,8 @@ namespace TopMusicExam
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
-    
+
+            // modification du bundle css avec les assets progressus
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/font-awesome.min.css",
@@ -29,6 +30,7 @@ namespace TopMusicExam
                       "~/Content/main.css",
                       "~/Content/Site.css"));
 
+            //creation du bundle avec les assets progressus
             bundles.Add(new ScriptBundle("~/bundles/progressus").Include(
                     "~/Scripts/google-map.js",
                     "~/Scripts/headroom.min.js",
