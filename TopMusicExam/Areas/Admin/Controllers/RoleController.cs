@@ -12,16 +12,9 @@ namespace TopMusicExam.Controllers
 {
     public class RoleController : Controller
     {
-        
-
-
-
-
-
-
         public ActionResult Index()
         {
-            // Populate Dropdown Lists
+            /*// Populate Dropdown Lists
             var context = new Models.ApplicationDbContext();
 
             var rolelist = context.Roles.OrderBy(r => r.Name).ToList().Select(rr =>
@@ -33,7 +26,8 @@ namespace TopMusicExam.Controllers
             ViewBag.Users = userlist;
 
             ViewBag.Message = "";
-
+            */
+            
             return View();
         }
 

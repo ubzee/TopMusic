@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TopMusicApplication.ViewModels;
-using TopMusicDomain;
+
 
 
 namespace TopMusicApplication.Services
@@ -13,8 +13,7 @@ namespace TopMusicApplication.Services
     {
         public string CreateRole(RoleViewModel viewModel)
         {
-            return RoleService.CreateRole(viewModel.Name);
-
+            return TopMusicDomain.Services.RoleService.CreateRole(viewModel.Name);
         }
     }
 }
