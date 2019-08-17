@@ -17,7 +17,8 @@ namespace TopMusicDomain.Services
                 {
                     var role = new AspNetRoles
                     {
-                        Name = roleName
+                        Name = roleName,
+                        Id = Guid.NewGuid().ToString()
                     };
                     db.AspNetRoles.Add(role);
                     db.SaveChanges();
