@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TopMusicApplication.ViewModels.CategoryViewModel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+
+<h2>Categories</h2>
+
+
+<div class="data-table-wrapper card card-small mb-4">
+    <table class="table table-striped mb-0" data-table="on">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Playlist</th>
+                <th>Statut</th>
+                <th>Image</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+            <tr>
+                <td>@item.Category.Name</td>
+                <td>@item.Category.Description</td>
+                <td>
+                    @Html.ActionLink("Albums", "Index", "Album", new { id = item.Category.Category_ID }, null)
+                </td>
+                <td>@item.Category.Status</td>
+                <td>
+                    @Html.ActionLink("Edit", "GetCategory", new { category_id = item.Category.Category_ID }) |
+                    @Html.ActionLink("Delete", "DeleteCategory", new { category_id = item.Category.Category_ID })
+                </td>
+            </tr>
+                }
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Create New", "CreateCategory")
+</p>
+

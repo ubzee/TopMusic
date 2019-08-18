@@ -29,10 +29,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <li class="active">@Html.ActionLink("Home", "Index", "Home", new { Area = "" }, null)</li>
+                    <li>@Html.ActionLink("Classement", "Classement", "Home", new { Area = "" }, null)</li>
+                    
                     @if (User.IsInRole("Administrator"))
                     {
-                        <li>@Html.ActionLink("Roles", "Index", "Role", new { Area = "admin" }, null)</li>
-                        <li>@Html.ActionLink("Categories", "Index", "Category", new { Area = "admin" }, null)</li>
+                        <li>@Html.ActionLink("Roles", "Index", "Role", new { Area = "Admin" }, null)</li>
+                        <li>@Html.ActionLink("Categories", "Index", "Category", new { Area = "Admin" }, null)</li>
 
                     }
                     @Html.Partial("_LoginPartial")
@@ -57,10 +59,10 @@
     <!-- header secondary pour mieux placer les  containers -->
     <header id="head" class="secondary"></header>
 
-
     <div class="container ">
         @RenderBody()
     </div>
+
     <!-- /Intro-->
     <!-- Highlights - jumbotron -->
     <!--<div class="jumbotron top-space">
@@ -87,7 +89,7 @@
     <!-- /social links -->
 
 
-    <footer id="footer" class="bottom-space">
+    <footer id="footer" class="top-space">
 
         <div class="footer1">
             <div class="container">
@@ -157,13 +159,11 @@
 
     </footer>
 
-
-
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/headroom")
     @Scripts.Render("~/bundles/template")
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
