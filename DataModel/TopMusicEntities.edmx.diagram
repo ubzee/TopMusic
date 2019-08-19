@@ -12,11 +12,11 @@
         <AssociationConnector Association="TopMusicModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="TopMusicModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="TopMusicModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="TopMusicModel.Album" Width="1.5" PointX="5" PointY="3.375" />
-        <EntityTypeShape EntityType="TopMusicModel.Category" Width="1.5" PointX="2" PointY="3.375" />
+        <EntityTypeShape EntityType="TopMusicModel.Album" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TopMusicModel.Category" Width="1.5" PointX="3.125" PointY="3.875" />
         <AssociationConnector Association="TopMusicModel.FK_dbo_Album_dbo_Category_CategoryID" />
         <AssociationConnector Association="TopMusicModel.Vote" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -22,7 +22,7 @@ namespace DataModel
     
         public int Album_ID { get; set; }
         public string Title { get; set; }
-        public int MusicBrainz_ID { get; set; }
+        public string MusicBrainz_ID { get; set; }
         public string ArtistName { get; set; }
         public int Category_ID { get; set; }
         public string Image { get; set; }

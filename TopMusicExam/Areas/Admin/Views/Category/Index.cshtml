@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TopMusicApplication.ViewModels.CategoryViewModel>
+﻿@model List<TopMusicApplication.ViewModels.CategoryViewModel>
 
 @{
     ViewBag.Title = "View";
@@ -24,15 +24,15 @@
             @foreach (var item in Model)
                 {
             <tr>
-                <td>@item.Category.Name</td>
-                <td>@item.Category.Description</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
                 <td>
-                    @Html.ActionLink("Albums", "Index", "Album", new { id = item.Category.Category_ID }, null)
+                    @Html.ActionLink("Albums", "Index", "Album", new { category_id = item.Category_ID }, null)
                 </td>
-                <td>@item.Category.Status</td>
+                <td>@item.Visibility</td>
                 <td>
-                    @Html.ActionLink("Edit", "GetCategory", new { category_id = item.Category.Category_ID }) |
-                    @Html.ActionLink("Delete", "DeleteCategory", new { category_id = item.Category.Category_ID })
+                    @Html.ActionLink("Edit", "GetCategory", new { category_id = item.Category_ID }) |
+                    @Html.ActionLink("Delete", "DeleteCategory", new { category_id = item.Category_ID })
                 </td>
             </tr>
                 }

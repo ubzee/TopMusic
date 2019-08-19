@@ -1,0 +1,103 @@
+﻿@model TopMusicApplication.ViewModels.AlbumViewModel
+
+@{
+    ViewBag.Title = "Albums";
+}
+
+<div class="col">
+    <div class="row">
+        @using (Html.BeginForm("MBSearch", "Album", new {category_id = Model.Category_ID}, FormMethod.Post, new { @class = "form-inline" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Label("Search :")
+            @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+            <div class="form-group">
+                @Html.Label("Album")
+                @Html.RadioButtonFor(model => model.SearchBy, "Album", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+
+                @Html.Label("Artist")
+                @Html.RadioButtonFor(model => model.SearchBy, "Artist", new { @class = "form-control" })
+            </div>
+            //<input type="submit" value="Search" class="btn btn-default" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="col-lg-6">
+    <h2>Résultats</h2>
+    @if (Model.MBAlbums == null)
+    {
+        <p>Faites une recherche pour afficher les résultats</p>
+    }
+    else
+    {
+        <div class="data-table-wrapper card card-small mb-4">
+            <table class="table table-striped mb-0" data-table="on">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Artiste</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MBAlbums)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.ArtistName</td>
+                            <td>
+                                @Html.ActionLink("Add", "AddAlbum", new { category_id = Model.Category_ID, MusicBrainz_ID = item.MusicBrainz_ID, Title = item.Title, ArtistName = item.ArtistName })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+</div>
+<div class="col-lg-6">
+    <h2>Albums</h2>
+
+    <div class="data-table-wrapper card card-small mb-4">
+        <table class="table table-striped mb-0" data-table="on">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Album</th>
+                    <th>Artiste</th>
+                    <th>Categorie</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Albums)
+                {
+                    <tr>
+                        <td></td>
+                        <td>@item.Title</td>
+                        <td>@item.ArtistName</td>
+                        <td>@item.Category_ID</td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteAlbum", new { album_ID = item.Album_ID, category_ID = item.Category_ID})
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to Category", "Index", "Category", null, new { @class = "btn btn-default" })
+</div>
+
+
+

@@ -53,9 +53,9 @@ namespace TopMusicDomain.Services
             using (TopMusicEntities db = new TopMusicEntities())
             {
                 var category = db.Category.Find(category_id);
-                    //db.album.RemoveRange(category.Album);
-                    db.Category.Remove(category);
-                    return db.SaveChanges();
+                db.Album.RemoveRange(category.Album);
+                db.Category.Remove(category);
+                return db.SaveChanges();
             }
         }
 

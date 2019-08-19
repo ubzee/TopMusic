@@ -15,6 +15,10 @@ namespace TopMusicExam.Areas.Admin.Controllers
 {
     public class RoleController : Controller
     {
+        // LA LOGIQUE DE CE CONTROLLER DOIT ETRE REMISE EN ACCORD AVEC L'ARCHITECTURE UTILISEE 
+        // Controller plus actif actuellement 
+
+
         public ActionResult Index()
         {
             /*// Populate Dropdown Lists

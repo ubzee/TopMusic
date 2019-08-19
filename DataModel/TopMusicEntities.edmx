@@ -11,8 +11,8 @@
           </Key>
           <Property Name="Album_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MusicBrainz_ID" Type="int" Nullable="false" />
-          <Property Name="ArtistName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MusicBrainz_ID" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="ArtistName" Type="varchar" MaxLength="100" />
           <Property Name="Category_ID" Type="int" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="250" />
         </EntityType>
@@ -255,7 +255,7 @@
             <End Role="Album" EntitySet="Album" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -346,8 +346,8 @@
           </Key>
           <Property Name="Album_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MusicBrainz_ID" Type="Int32" Nullable="false" />
-          <Property Name="ArtistName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MusicBrainz_ID" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ArtistName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Category_ID" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Category" Relationship="TopMusicModel.FK_dbo_Album_dbo_Category_CategoryID" FromRole="Album" ToRole="Category" />
@@ -382,7 +382,7 @@
           <End Type="TopMusicModel.Album" Role="Album" Multiplicity="*" />
           <End Type="TopMusicModel.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

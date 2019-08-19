@@ -11,22 +11,13 @@ namespace TopMusicApplication.Services
 {
     public class CategoryServiceController
     {
-        //Creation
+        //Creation Catégorie
         public int CreateCategory(CategoryViewModel viewModel)
         {
             return CategoryService.CreateCategory(viewModel.Name, viewModel.Description);
         }
 
-        //Liste des catégories pour la view index
-        public IEnumerable<CategoryViewModel> GetAllCategories()
-        {
-            foreach (var category in CategoryService.GetCategories())
-            {
-                yield return new CategoryViewModel() { Category = category };
-            }
-        }
-
-        //get category pour Edit view
+        //get category pour populer Edit view
         public CategoryViewModel GetCategoryViewModel(int category_id)
         {
             var category = CategoryService.GetCategory(category_id);
@@ -52,27 +43,23 @@ namespace TopMusicApplication.Services
         }
 
 
-
-
-
-
         //Get List Of Categories
-        //public List<CategoryViewModel> GetAllCategories()
-        //{
-        //    List<CategoryViewModel> viewModels = new List<CategoryViewModel>();
+        public List<CategoryViewModel> GetAllCategories()
+        {
+            List<CategoryViewModel> viewModels = new List<CategoryViewModel>();
 
-        //    foreach (var category in CategoryService.GetListCategories())
-        //    {
-        //        viewModels.Add(new CategoryViewModel
-        //        {
-        //            Category_ID = category.Category_ID,
-        //            Name = category.Name,
-        //            Description = category.Description,
-        //            Image = category.Image
-        //        });
-        //    }
-        //    return viewModels;
-        //}
+            foreach (var category in CategoryService.GetCategories())
+            {
+                viewModels.Add(new CategoryViewModel
+                {
+                    Category_ID = category.Category_ID,
+                    Name = category.Name,
+                    Description = category.Description,
+                    Image = category.Image
+                });
+            }
+            return viewModels;
+        }
 
 
     }
