@@ -1,0 +1,44 @@
+﻿@model TopMusicApplication.ViewModels.VoteViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>@Model.Category.Name</h2>*@
+
+
+<div class="col-sm-6">
+    @*<p>@Model.Category.Description</p>*@
+</div>
+
+<div class="col-sm-6">
+    <ul class="list-group">
+        @foreach (var item in Model.Albums)
+        {
+            <li class="list-group-item align-middle">
+                <span class="align-middle"><strong>@item.Title</strong></span> @item.ArtistName
+                <a href="@Url.Action("Vote", "Vote", new { album_id = item.Album_ID, category_ID = item.Category_ID})">
+                    <span class="glyphicon glyphicon-heart ">Vote</span>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+
+@*<div class="row">
+    <h3>Top Categories</h3>
+
+    @foreach (var item in Model.TopRankCategories)
+    {
+        <div class="col-sm-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge"><a href="@Url.Action("Index", "Vote", new { category_id = item.Category_ID })">Vote Now</a></span>
+                    <span><strong>@item.Name</strong></span> @item.Description
+                </li>
+            </ul>
+        </div>
+    }
+
+</div>*@

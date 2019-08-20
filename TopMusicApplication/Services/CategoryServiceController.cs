@@ -55,6 +55,7 @@ namespace TopMusicApplication.Services
                     Category_ID = category.Category_ID,
                     Name = category.Name,
                     Description = category.Description,
+                    Visibility = (CategoryVisibility)category.Status,
                     Image = category.Image
                 });
             }

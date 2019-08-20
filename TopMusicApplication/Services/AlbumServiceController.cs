@@ -13,7 +13,7 @@ namespace TopMusicApplication.Services
         //get category pour populer Edit view
         public AlbumViewModel GetAlbumsViewModel(int category_id)
         {
-            var viewModel = new AlbumViewModel
+            var viewModel = new AlbumViewModel()
             {
                 Albums = AlbumService.GetAlbumsByCategory(category_id),
                 Category_ID = category_id

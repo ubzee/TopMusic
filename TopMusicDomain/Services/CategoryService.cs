@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TopMusicCommon;
 
 namespace TopMusicDomain.Services
 {
@@ -18,7 +19,7 @@ namespace TopMusicDomain.Services
                 {
                     Name = name,
                     Description = description,
-                    Status = 0,
+                    Status = (int)CategoryVisibility.Hide,
                     Image = "Evolution à Venir"
                 };
                 db.Category.Add(category);
@@ -59,7 +60,46 @@ namespace TopMusicDomain.Services
             }
         }
 
-        //public static List<Category> GetListCategories()
+        public static List<Category> GetCategories()
+        {
+            List<Category> categories = new List<Category>();
+            using (TopMusicEntities db = new TopMusicEntities())
+            {
+                categories = db.Category.ToList();
+            }
+            return categories;
+        }
+
+
+        public static List<Category> GetNewCategories()
+        {
+            List<Category> categories = new List<Category>();
+            using (TopMusicEntities db = new TopMusicEntities())
+            {
+                categories = db.Category.Where(x => x.Status == (int)CategoryVisibility.Opened).OrderByDescending(y => y.Category_ID).ToList();
+            }
+            return categories;
+        }
+
+
+        public static List<Category> GetTopRankCategories()
+        {
+            List<Category> categories = new List<Category>();
+            using (TopMusicEntities db = new TopMusicEntities())
+            {
+             
+                categories = db.Album
+                    .Where(x => x.Category.Status == (int)CategoryVisibility.Opened)
+                    .Select(x => new { x.Album_ID, x.Category, Votes = x.AspNetUsers.Count })
+                    .GroupBy(x => x.Category)
+                    .Select(y => new { Category = y.Key, NbVotes = y.Sum(x => x.Votes) })
+                    .OrderByDescending(x => x.NbVotes)
+                    .Select(x => x.Category)
+                    .ToList();
+            }
+            return categories;
+        }
+        //public static IEnumerable<Category> GetCategories()
         //{
         //    List<Category> categories = null;
         //    using (TopMusicEntities db = new TopMusicEntities())
@@ -68,16 +108,6 @@ namespace TopMusicDomain.Services
         //    }
         //    return categories;
         //}
-
-        public static IEnumerable<Category> GetCategories()
-        {
-            List<Category> categories = null;
-            using (TopMusicEntities db = new TopMusicEntities())
-            {
-                categories = db.Category.ToList();
-            }
-            return categories;
-        }
 
     }
 }

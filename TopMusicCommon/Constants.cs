@@ -8,6 +8,8 @@ namespace TopMusicCommon
 {
     public class Constants
     {
-        public const int Votes_Max = 3;
+        // Constante prévue pour limiter le nombre de votes par personne 
+        //Evolution car les votes ne sont pas encore complètements implémentés 
+        public const int MaxVotes = 3;
     }
 }

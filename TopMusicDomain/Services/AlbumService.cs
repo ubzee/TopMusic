@@ -77,6 +77,16 @@ namespace TopMusicDomain.Services
             return true;
         }
 
+        //public static List<Album> GetAlbumsForVotableCategory(string user_id, int category_id)
+        //{
+        //    List<Album> albums = new List<Album>();
+
+        //    using (TopMusicEntities db = new TopMusicEntities())
+        //    {
+        //        albums = db.Album
+        //                .Where (x => x.Category_ID == category_id && )
+        //    }
+        //}
     }
 
 
