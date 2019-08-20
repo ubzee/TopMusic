@@ -13,6 +13,7 @@ using TopMusicExam.Models;
 
 namespace TopMusicExam.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class RoleController : Controller
     {
         // LA LOGIQUE DE CE CONTROLLER DOIT ETRE REMISE EN ACCORD AVEC L'ARCHITECTURE UTILISEE 
